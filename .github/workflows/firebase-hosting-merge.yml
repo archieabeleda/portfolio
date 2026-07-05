@@ -21,7 +21,7 @@ jobs:
         with:
           project_id: archieabeleda-web
           # paste the line from Part 7 here:
-          workload_identity_provider: projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+          workload_identity_provider: projects/118692171608/locations/global/workloadIdentityPools/github-pool/providers/github-provider
           # paste your service account email here:
           service_account: github-action-1290210391@archieabeleda-web.iam.gserviceaccount.com
 
