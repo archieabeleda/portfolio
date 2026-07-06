@@ -62,4 +62,4 @@ Then open http://localhost:8000.
 
 ## License
 
-MIT. See LICENSE.
+MIT. See LICENSE. Free to use and adapt. A link back to archieabeleda.dev is appreciated, not required.
