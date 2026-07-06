@@ -189,9 +189,10 @@ nav { margin-top: auto; display: flex; flex-direction: column; gap: 2px; }
   transition: width .2s ease, background .16s;
 }
 .nav-btn:hover { color: var(--bone); }
-.nav-btn:hover .tick { background: var(--mist); }
+.nav-btn:hover .tick { width: 30px; background: var(--mist); }
 .nav-btn[aria-current="true"] { color: var(--signal); }
-.nav-btn[aria-current="true"] .tick { width: 18px; background: var(--hairline-2); }
+.nav-btn[aria-current="true"] .tick { width: 34px; background: var(--signal); }
+.nav-btn[aria-current="true"]:hover .tick { background: var(--signal); }
 .nav-btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 3px; }
 
 /* ---------- right content ---------- */
