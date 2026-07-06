@@ -86,7 +86,7 @@
     </div>
 
     <nav aria-label="Sections">
-      <button class="nav-btn" data-target="about"><span class="tick"></span>about</button>
+      <button class="nav-btn" data-target="about" aria-current="true"><span class="tick"></span>about</button>
       <button class="nav-btn" data-target="capabilities"><span class="tick"></span>capabilities</button>
       <button class="nav-btn" data-target="lab"><span class="tick"></span>lab &amp; projects</button>
       <button class="nav-btn" data-target="stack"><span class="tick"></span>tech stack</button>
@@ -101,6 +101,8 @@
     <section class="panel active" id="about" tabindex="-1">
       <p class="eyebrow">about</p>
       <h2 class="head">Still working out where AI earns its keep and where it's just confident nonsense.</h2>
+
+      <p class="lead">Thirteen years securing enterprise networks that simply cannot go down. Casino floors, hospitality, data centers, and now multi-site campuses. The common thread is building things secure from the start, instead of bolting it on after something breaks.</p>
 
       <p class="body">Lately my off hours go to pointing AI at the network. A home lab full of autonomous agents that read device state and reason about it, fenced in behind enough guardrails that they can look but almost never touch. Same instinct I bring to work. A lot more freedom to break things.</p>
 
@@ -148,7 +150,6 @@
 
       <div class="grid2">
         <div class="card">
-          <div class="idx">01</div>
           <h3>Network Security</h3>
           <p>Designing and hardening enterprise Cisco fabrics. Segmentation is the default here, not an afterthought.</p>
           <div class="tags">
@@ -157,7 +158,6 @@
         </div>
 
         <div class="card">
-          <div class="idx">02</div>
           <h3>Cybersecurity</h3>
           <p>Defense in depth, taken literally. Layered controls so one failure never reaches anything that matters.</p>
           <div class="tags">
@@ -166,7 +166,6 @@
         </div>
 
         <div class="card">
-          <div class="idx">03</div>
           <h3>Cloud Security</h3>
           <p>Secure cloud architecture grounded in the CCSP domains. Isolation, identity, and data boundaries that actually hold.</p>
           <div class="tags">
@@ -175,7 +174,6 @@
         </div>
 
         <div class="card">
-          <div class="idx">04</div>
           <h3>AI Security</h3>
           <p>Putting agents to work on real infrastructure without handing over the keys. Guardrails, isolation, and a short leash.</p>
           <div class="tags">
@@ -323,11 +321,6 @@
           GitHub
         </a>
       </div>
-
-      <p class="footnote">
-        <span class="ok">$</span> static site, no CMS, no database, minimal attack surface<br />
-        <span class="ok">$</span> served only over HTTPS on a .dev domain, because it refuses to load any other way
-      </p>
     </section>
 
   </main>
