@@ -1,461 +1,322 @@
-:root {
-  /* ---- palette: "telemetry console" ---- */
-  --ink:      #0A0F14;   /* page background */
-  --ink-2:    #0C131A;   /* subtle gradient stop */
-  --carbon:   #111923;   /* card surface */
-  --carbon-2: #0E151D;   /* raised-but-recessed surface */
-  --hairline: #1E2A36;   /* borders / dividers */
-  --hairline-2:#27384a;  /* brighter border on hover */
-  --mist:     #7E92A6;   /* muted text */
-  --mist-dim: #56697c;   /* faintest text */
-  --bone:     #DCE6F0;   /* primary text */
-  --bone-2:   #F2F6FB;   /* brightest text */
-  --signal:   #34E2C4;   /* the one accent: fiber teal */
-  --signal-d: #1ba48d;   /* deeper teal */
-  --signal-glow: rgba(52, 226, 196, 0.14);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Archie Abeleda | Network and Cloud Security Engineer</title>
+<meta name="description" content="Archie Abeleda. Network and Cloud security engineer with thirteen years across enterprise network, cloud, and AI security. I build read-only AI tooling that audits configs for compliance drift. CISSP, CCSP, CCNP Security, PCNSE." />
 
-  --rail-w: 340px;
-  --max-w: 1180px;
+<!-- Link preview cards for LinkedIn, Slack, iMessage, etc. -->
+<meta property="og:title" content="Archie Abeleda | Network and Cloud Security Engineer" />
+<meta property="og:description" content="Thirteen years across network, cloud, and AI security. I build read-only AI tooling that audits network configs for compliance drift." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://archieabeleda.dev/" />
+<meta name="twitter:card" content="summary" />
 
-  --f-display: 'Space Grotesk', system-ui, sans-serif;
-  --f-body: 'IBM Plex Sans', system-ui, sans-serif;
-  --f-mono: 'IBM Plex Mono', ui-monospace, monospace;
-}
+<!--
+  ============================================================================
+  THREE-FILE VERSION  (keep all three together in your "public" folder)
+      public/index.html   <- this file (the words)
+      public/styles.css   <- the look
+      public/app.js       <- the menu + background animation
 
-* { box-sizing: border-box; }
+  HOW TO EDIT  (search this file for the word EDIT):
+    1.  Social/contact links  -> EDIT LINKS   (GitHub + LinkedIn are filled in)
+    2.  Your photo (optional)  -> EDIT PHOTO
+    3.  Email address          -> EDIT EMAIL
+  Everything between a ">" and a "<" is plain text you can change freely.
+  ============================================================================
+-->
 
-html { scroll-behavior: smooth; }
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-body {
-  margin: 0;
-  font-family: var(--f-body);
-  color: var(--bone);
-  background:
-    radial-gradient(1200px 700px at 80% -10%, rgba(52,226,196,0.05), transparent 60%),
-    linear-gradient(180deg, var(--ink-2), var(--ink) 40%);
-  background-attachment: fixed;
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
-}
+<link rel="stylesheet" href="styles.css" />
+<script src="app.js" defer></script>
+</head>
+<body>
 
-/* signature element: slow topology mesh, sits behind everything */
-#mesh {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.55;
-  pointer-events: none;
-}
+<!-- signature: topology mesh -->
+<canvas id="mesh" aria-hidden="true"></canvas>
 
-a { color: var(--signal); text-decoration: none; }
-a:hover { color: var(--bone-2); }
+<div class="shell">
 
-::selection { background: var(--signal-glow); color: var(--bone-2); }
+  <!-- ============== LEFT RAIL ============== -->
+  <header class="rail">
 
-/* ---------- shell ---------- */
-.shell {
-  position: relative;
-  z-index: 1;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 28px;
-  display: grid;
-  grid-template-columns: var(--rail-w) 1fr;
-  gap: 56px;
-  align-items: start;
-}
+    <!-- EDIT PHOTO: to use a real photo instead of the monogram, replace this
+         whole <div class="avatar">…</div> block with:
+         <div class="avatar"><img src="me.jpg" alt="Archie Abeleda" class="avatar-img" /></div>
+         and drop me.jpg into the public folder. -->
+    <div class="avatar" aria-hidden="true">
+      <svg viewBox="0 0 88 88" fill="none">
+        <path d="M44 4 78 24V64L44 84 10 64V24L44 4Z" stroke="#1ba48d" stroke-width="1.5"/>
+        <path d="M44 4 78 24V64L44 84 10 64V24L44 4Z" stroke="#34E2C4" stroke-width="1.5" stroke-dasharray="4 220" stroke-linecap="round"/>
+        <circle cx="44" cy="44" r="3" fill="#34E2C4"/>
+        <text x="44" y="50" text-anchor="middle" font-family="'Space Grotesk',sans-serif"
+              font-size="22" font-weight="600" fill="#DCE6F0">AA</text>
+      </svg>
+    </div>
 
-/* ---------- left rail (identity) ---------- */
-.rail {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  padding: 56px 0 40px;
-  display: flex;
-  flex-direction: column;
-}
+    <h1 class="name">Archie Abeleda</h1>
+    <div class="idblock">
+      <div><span class="idk">ID:</span> Armando Abeleda Jr.</div>
+      <div><span class="idk">Run as:</span> Archie</div>
+    </div>
+    <p class="role">Network and Cloud Security Engineer</p>
 
-.avatar {
-  width: 88px; height: 88px;
-  margin-bottom: 26px;
-}
-.avatar svg { display: block; width: 100%; height: 100%; }
-/* used if you swap the monogram for a real photo (see EDIT PHOTO in index.html) */
-.avatar-img {
-  width: 100%; height: 100%;
-  border-radius: 14px;
-  object-fit: cover;
-  border: 1px solid var(--signal-d);
-}
+    <p class="tagline">Paranoid by trade, boring by design.</p>
 
-.name {
-  font-family: var(--f-display);
-  font-weight: 600;
-  font-size: 30px;
-  letter-spacing: -0.02em;
-  color: var(--bone-2);
-  margin: 0 0 6px;
-  line-height: 1.1;
-}
-.role {
-  font-family: var(--f-mono);
-  font-size: 13px;
-  color: var(--signal);
-  letter-spacing: 0.02em;
-  margin: 0 0 22px;
-}
-.tagline {
-  font-family: var(--f-display);
-  font-size: 16px;
-  color: var(--bone);
-  margin: 0 0 24px;
-  line-height: 1.4;
-}
-.subtag {
-  font-size: 13.5px;
-  color: var(--mist);
-  margin: 0 0 24px;
-  max-width: 30ch;
-}
+    <span class="status"><span class="dot" aria-hidden="true"></span> Systems operational</span>
 
-/* live status readout */
-.status {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  font-family: var(--f-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--mist);
-  padding: 7px 12px;
-  border: 1px solid var(--hairline);
-  border-radius: 999px;
-  background: var(--carbon-2);
-  margin-bottom: 28px;
-  align-self: flex-start;
-}
-.dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--signal);
-  box-shadow: 0 0 0 0 var(--signal-glow);
-  animation: pulse 2.4s ease-out infinite;
-}
-@keyframes pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(52,226,196,0.45); }
-  70%  { box-shadow: 0 0 0 7px rgba(52,226,196,0); }
-  100% { box-shadow: 0 0 0 0 rgba(52,226,196,0); }
-}
+    <!-- EDIT LINKS: GitHub and LinkedIn are set. Update the URLs if they ever change. -->
+    <div class="socials">
+      <a href="https://github.com/archieabeleda/" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/ajrabeleda" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.63 13.63h-2.37V9.9c0-.89-.02-2.03-1.24-2.03-1.24 0-1.43.97-1.43 1.97v3.79H6.22V6h2.27v1.04h.03c.32-.6 1.09-1.23 2.24-1.23 2.4 0 2.84 1.58 2.84 3.63v4.19ZM3.56 4.96a1.37 1.37 0 1 1 0-2.75 1.37 1.37 0 0 1 0 2.75ZM4.74 13.63H2.37V6h2.37v7.63ZM14.82 0H1.18C.53 0 0 .52 0 1.16v13.68C0 15.48.53 16 1.18 16h13.63c.65 0 1.19-.52 1.19-1.16V1.16C16 .52 15.46 0 14.82 0Z"/></svg>
+      </a>
+      <!-- EDIT EMAIL: change the address after mailto: -->
+      <a href="mailto:hello@archieabeleda.dev" aria-label="Email" title="Email">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="m2 4 6 4.5L14 4"/></svg>
+      </a>
+    </div>
 
-/* social row */
-.socials { display: flex; gap: 10px; margin-bottom: 38px; }
-.socials a {
-  width: 38px; height: 38px;
-  display: grid; place-items: center;
-  border: 1px solid var(--hairline);
-  border-radius: 9px;
-  color: var(--mist);
-  background: var(--carbon-2);
-  transition: border-color .18s, color .18s, transform .18s;
-}
-.socials a:hover {
-  color: var(--signal);
-  border-color: var(--signal-d);
-  transform: translateY(-2px);
-}
-.socials svg { width: 17px; height: 17px; }
+    <nav aria-label="Sections">
+      <button class="nav-btn" data-target="about" aria-current="true"><span class="tick"></span>about</button>
+      <button class="nav-btn" data-target="projects"><span class="tick"></span>projects</button>
+      <button class="nav-btn" data-target="stack"><span class="tick"></span>tech stack</button>
+      <button class="nav-btn" data-target="contact"><span class="tick"></span>contact</button>
+    </nav>
+  </header>
 
-/* nav */
-nav { margin-top: auto; display: flex; flex-direction: column; gap: 2px; }
-.nav-btn {
-  appearance: none;
-  background: none;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  font-family: var(--f-mono);
-  font-size: 13px;
-  letter-spacing: 0.02em;
-  color: var(--mist);
-  padding: 9px 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: color .16s;
-}
-.nav-btn .tick {
-  width: 18px; height: 1px; background: var(--hairline-2);
-  transition: width .2s ease, background .16s;
-}
-.nav-btn:hover { color: var(--bone); }
-.nav-btn:hover .tick { width: 30px; background: var(--mist); }
-.nav-btn[aria-current="true"] { color: var(--signal); }
-.nav-btn[aria-current="true"] .tick { width: 34px; background: var(--signal); }
-.nav-btn[aria-current="true"]:hover .tick { background: var(--signal); }
-.nav-btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 3px; }
+  <!-- ============== RIGHT CONTENT ============== -->
+  <main class="content">
 
-/* ---------- right content ---------- */
-.content { padding: 56px 0 96px; min-width: 0; }
+    <!-- ---------- ABOUT ---------- -->
+    <section class="panel active" id="about" tabindex="-1">
+      <p class="eyebrow">about</p>
+      <h2 class="head">I know where AI earns its keep on a network, and where it's just confident nonsense.</h2>
 
-.panel { display: none; animation: fade .4s ease both; }
-.panel.active { display: block; }
-@keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+      <p class="lead">Thirteen years keeping high-stakes networks locked down and online. Belt and braces on every layer. Now I point the same paranoia at my own kit.</p>
 
-.eyebrow {
-  font-family: var(--f-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--signal);
-  margin: 0 0 18px;
-}
-.eyebrow::before { content: "// "; color: var(--signal-d); }
+      <p class="body">Lately my off hours go to pointing AI at the network. A home lab full of autonomous agents that read device state and reason about it, fenced in behind enough guardrails that they can look but almost never touch. Same instinct I bring to work. A lot more freedom to break things.</p>
 
-h2.head {
-  font-family: var(--f-display);
-  font-weight: 600;
-  font-size: clamp(26px, 4vw, 34px);
-  letter-spacing: -0.02em;
-  color: var(--bone-2);
-  margin: 0 0 26px;
-  line-height: 1.15;
-}
+      <hr class="rule" />
 
-p.lead { font-size: 16.5px; color: var(--bone); max-width: 60ch; margin: 0 0 18px; }
-p.body { font-size: 15px; color: var(--mist); max-width: 62ch; margin: 0 0 18px; }
-p.body strong, p.lead strong { color: var(--bone); font-weight: 600; }
+      <p class="sublabel">Certifications</p>
+      <div class="certs">
+        <a class="cert" href="https://www.credly.com/badges/00c78370-a452-4af7-bec9-78c4dd4a7720" target="_blank" rel="noopener" title="Verify CISSP on Credly"><div class="c-code">CISSP</div><div class="c-full">Information Systems Security</div></a>
+        <a class="cert" href="https://www.credly.com/badges/651c7d74-5b6c-49fd-997b-9a498aa21085" target="_blank" rel="noopener" title="Verify CCSP on Credly"><div class="c-code">CCSP</div><div class="c-full">Cloud Security Professional</div></a>
+        <a class="cert" href="https://www.credly.com/badges/cd480174-94f9-4bbc-83a9-6b7c5ceb7ab5" target="_blank" rel="noopener" title="Verify CCNP Security on Credly"><div class="c-code">CCNP Security</div><div class="c-full">Cisco Network Professional</div></a>
+        <a class="cert" href="https://www.credly.com/badges/5b44c034-8424-43c4-ab25-6cc8f60e01cd" target="_blank" rel="noopener" title="Verify PCNSE on Credly"><div class="c-code">PCNSE</div><div class="c-full">Palo Alto Network Security</div></a>
+        <!-- add more <a class="cert" href="credly-url">…</a> blocks here as you earn them -->
+      </div>
 
-.rule { height: 1px; background: var(--hairline); margin: 40px 0; border: none; }
+      <hr class="rule" />
 
-.sublabel {
-  font-family: var(--f-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--mist-dim);
-  margin: 0 0 18px;
-}
+      <p class="sublabel">How I work</p>
+      <div class="grid2">
+        <div class="card">
+          <h3>Automation that fires itself</h3>
+          <p>Python and Ansible doing the repetitive graft, so I never babysit a CLI for it again.</p>
+        </div>
+        <div class="card">
+          <h3>Self-hosted AI</h3>
+          <p>Local models on my own hardware, tuned where the cloud can't watch. Nothing leaves the house.</p>
+        </div>
+        <div class="card">
+          <h3>Aggressive segmentation</h3>
+          <p>Every segment walled off from the rest. Default-deny or it didn't happen.</p>
+        </div>
+        <div class="card">
+          <h3>Breaking my own lab</h3>
+          <p>I break my own lab before anyone else can, because that's the whole point. Better a quiet Tuesday than a Friday night.</p>
+        </div>
+      </div>
 
-/* capability cards (four domains) */
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-#capabilities .grid2 { margin-top: 26px; }
-.card {
-  border: 1px solid var(--hairline);
-  background: linear-gradient(180deg, var(--carbon), var(--carbon-2));
-  border-radius: 12px;
-  padding: 22px 22px 24px;
-  transition: border-color .2s, transform .2s;
-}
-.card:hover { border-color: var(--hairline-2); transform: translateY(-2px); }
-.card .idx {
-  font-family: var(--f-mono);
-  font-size: 12px;
-  color: var(--signal);
-  margin-bottom: 10px;
-}
-.card h3 {
-  font-family: var(--f-display);
-  font-weight: 600;
-  font-size: 17px;
-  color: var(--bone-2);
-  margin: 0 0 8px;
-}
-.card p { font-size: 13.5px; color: var(--mist); margin: 0 0 14px; }
+      <hr class="rule" />
 
-/* mono tag pills */
-.tags { display: flex; flex-wrap: wrap; gap: 7px; }
-.tags-spaced { margin-top: 18px; }
-.mt-block { margin-top: 22px; }
-.offclock { font-size: 15px; color: var(--mist); max-width: 62ch; margin: 0; }
-.tag {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  color: var(--mist);
-  border: 1px solid var(--hairline);
-  border-radius: 6px;
-  padding: 4px 8px;
-  transition: color .16s, border-color .16s;
-}
-.card:hover .tag { border-color: var(--hairline-2); }
-.tag.hot { color: var(--signal); border-color: var(--signal-d); }
+      <p class="offclock">Off the clock, I'm usually getting choked out on a jiu-jitsu mat, somewhere in the backcountry with a tent, or reading Stoics who would not approve of my screen time.</p>
+    </section>
 
-/* certifications */
-.certs { display: flex; gap: 12px; flex-wrap: wrap; }
-.cert {
-  display: block;
-  border: 1px solid var(--hairline);
-  border-radius: 10px;
-  padding: 14px 18px;
-  background: var(--carbon-2);
-  min-width: 150px;
-  transition: border-color .2s, transform .2s;
-}
-a.cert:hover { border-color: var(--signal-d); transform: translateY(-2px); }
-.cert .c-code { font-family: var(--f-display); font-weight: 600; font-size: 18px; color: var(--bone-2); }
-.cert .c-full { font-size: 12px; color: var(--mist); font-family: var(--f-mono); margin-top: 3px; }
+    <!-- ---------- PROJECTS (the centerpiece) ---------- -->
+    <section class="panel" id="projects" tabindex="-1">
+      <p class="eyebrow">projects</p>
+      <h2 class="head">Everything here checks its own work.</h2>
+      <p class="body">A self-hosted lab where I build and break network security and AIOps tools end to end. Real Cisco simulation, real local models, and a security architecture stricter than it needs to be. On purpose.</p>
 
-/* experience timeline */
-.xp { display: grid; grid-template-columns: 130px 1fr; gap: 0 26px; }
-.xp + .xp { margin-top: 4px; }
-.xp-when {
-  font-family: var(--f-mono);
-  font-size: 12px;
-  color: var(--mist-dim);
-  letter-spacing: 0.04em;
-  padding-top: 22px;
-}
-.xp-body {
-  border-left: 1px solid var(--hairline);
-  padding: 22px 0 22px 26px;
-  position: relative;
-}
-.xp-body::before {
-  content: ""; position: absolute; left: -4px; top: 28px;
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--ink); border: 1.5px solid var(--signal-d);
-}
-.xp:first-child .xp-body::before { border-color: var(--signal); background: var(--signal); }
-.xp h4 { font-family: var(--f-display); font-weight: 600; font-size: 16px; color: var(--bone-2); margin: 0 0 4px; }
-.xp .where { font-size: 13px; color: var(--signal); font-family: var(--f-mono); margin: 0 0 10px; }
-.xp p { font-size: 14px; color: var(--mist); margin: 0 0 12px; max-width: 60ch; }
+      <!-- Project 1: Config Compliance Copilot (flagship, newest) -->
+      <div class="proj">
+        <div class="proj-top">
+          <div class="flag">Flagship build</div>
+          <h3>Config Compliance Copilot</h3>
+          <p>I let an AI read every running-config on the network. It never gets a write path.</p>
+        </div>
+        <div class="proj-body">
 
-/* lab project blocks */
-.proj {
-  border: 1px solid var(--hairline);
-  border-radius: 14px;
-  overflow: hidden;
-  background: linear-gradient(180deg, var(--carbon), var(--carbon-2));
-  margin-bottom: 22px;
-}
-#projects .proj:first-of-type { margin-top: 24px; }
-.proj-top {
-  padding: 24px 26px 20px;
-  border-bottom: 1px solid var(--hairline);
-}
-.proj-top .flag {
-  font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.06em;
-  color: var(--signal); text-transform: uppercase; margin-bottom: 10px;
-}
-.proj-top h3 { font-family: var(--f-display); font-weight: 600; font-size: 21px; color: var(--bone-2); margin: 0 0 10px; line-height: 1.2; }
-.proj-top p { font-size: 14.5px; color: var(--mist); margin: 0; max-width: 64ch; }
-.proj-body { padding: 22px 26px 26px; }
+          <div class="field">
+            <div class="k">How it works</div>
+            <p>A local model pulls the running-config off the whole fleet, mixed vendors included, and turns it into something I can question by meaning instead of grep. Which devices are missing MACsec on uplinks. Which ACLs still permit any-any. Which boxes drifted off the standard NTP and AAA. It answers in seconds, and every finding cites the device and the exact line, so it is evidence I can verify, not a guess I have to trust.</p>
+          </div>
 
-.field { margin-bottom: 18px; }
-.field .k {
-  font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--mist-dim); margin-bottom: 7px;
-}
-.field p { font-size: 14px; color: var(--mist); margin: 0; max-width: 64ch; }
-.field p strong { color: var(--bone); font-weight: 600; }
+          <div class="field">
+            <div class="k">Read-only by construction</div>
+            <p>It logs in scoped to show commands, never enters config mode, and has no path to change a device. Worst case it misreads a stanza, and the citation is sitting right there for me to check. It cannot take the network down, because it cannot touch the network.</p>
+          </div>
 
-/* phased build = real sequence, so numbered markers are earned */
-.phases { display: grid; gap: 10px; margin: 6px 0 4px; }
-.phase {
-  display: grid; grid-template-columns: 30px 1fr auto; align-items: center; gap: 14px;
-  border: 1px solid var(--hairline); border-radius: 9px; padding: 12px 14px;
-  background: var(--carbon-2);
-}
-.phase .n { font-family: var(--f-mono); font-size: 13px; color: var(--signal); }
-.phase .t { font-size: 13.5px; color: var(--bone); }
-.phase .s { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; }
-.phase .s.done { color: var(--signal); }
-.phase .s.wip  { color: var(--mist); }
-.phase .s.wip::before { content: "● "; }
-.phase .s.done::before { content: "✓ "; }
+          <div class="field">
+            <div class="k">Nothing leaves the network</div>
+            <p>Local embedding model, local vector store, local reasoning model, all on my own hardware. The configs never hit a cloud API, which matters when every line is addressing, keys, and topology.</p>
+          </div>
 
-.btnrow { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-.btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--f-mono); font-size: 12.5px;
-  padding: 10px 15px; border-radius: 8px;
-  border: 1px solid var(--hairline); color: var(--bone);
-  background: var(--carbon-2);
-  transition: border-color .18s, color .18s, transform .18s;
-}
-.btn:hover { border-color: var(--signal-d); color: var(--signal); transform: translateY(-1px); }
-.btn svg { width: 15px; height: 15px; }
+          <div class="field">
+            <div class="k">The payoff</div>
+            <p>Compliance visibility across a heterogeneous fleet from one plain question, with an audit trail attached. Drift caught on a quiet Tuesday, instead of during the audit or after the breach.</p>
+          </div>
 
-/* contact */
-.contact-line { font-family: var(--f-display); font-size: clamp(20px, 3vw, 26px); color: var(--bone-2); margin: 0 0 24px; max-width: 48ch; line-height: 1.3; }
-.footnote { font-family: var(--f-mono); font-size: 12px; color: var(--mist-dim); margin-top: 36px; line-height: 1.7; }
-.footnote .ok { color: var(--signal); }
+          <!-- OPTIONAL, ONLY IF TRUE: uncomment and fill in real numbers once you have run it against the fleet.
+          <div class="field">
+            <div class="k">First run</div>
+            <p>166 devices on the first pass. N segmentation and ACL gaps surfaced, every one traceable to a device and line.</p>
+          </div>
+          -->
 
-/* ---------- responsive ---------- */
-@media (max-width: 880px) {
-  .shell { grid-template-columns: 1fr; gap: 0; padding: 0 22px; }
-  .rail { position: static; height: auto; padding: 44px 0 28px; }
-  nav {
-    margin-top: 30px; flex-direction: row; flex-wrap: wrap; gap: 6px;
-    border-top: 1px solid var(--hairline); padding-top: 22px;
-  }
-  .nav-btn { padding: 8px 0; }
-  .nav-btn .tick { width: 12px; }
-  .nav-btn[aria-current="true"] .tick { width: 20px; }
-  .content { padding: 8px 0 72px; }
-  .grid2 { grid-template-columns: 1fr; }
-  .xp { grid-template-columns: 88px 1fr; gap: 0 16px; }
-  .xp-when { padding-top: 22px; font-size: 11px; }
-}
+          <div class="tags tags-spaced">
+            <span class="tag hot">Read-Only</span><span class="tag">RAG</span><span class="tag">Qdrant</span><span class="tag">Ollama</span><span class="tag">Qwen3</span><span class="tag">nomic-embed-text</span><span class="tag">Netmiko</span><span class="tag">Multi-Vendor</span>
+          </div>
 
-@media (prefers-reduced-motion: reduce) {
-  * { scroll-behavior: auto; }
-  .dot { animation: none; }
-  .panel { animation: none; }
-}
+          <!-- EDIT LINK: point this at the specific repo once it exists; for now it goes to your profile -->
+          <div class="btnrow">
+            <a class="btn" href="https://github.com/archieabeleda/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+              Repository
+            </a>
+          </div>
+        </div>
+      </div>
 
-/* ---------- identity block under the name ---------- */
-.idblock {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  color: var(--bone);
-  margin: 2px 0 16px;
-  line-height: 1.85;
-}
-.idblock .idk {
-  color: var(--mist-dim);
-  letter-spacing: 0.06em;
-  margin-right: 6px;
-}
+      <!-- Project 2: Network Automation Toolkit (from the netops-automation repo) -->
+      <div class="proj">
+        <div class="proj-top">
+          <div class="flag">Tooling</div>
+          <h3>Network Automation Toolkit</h3>
+          <p>The boring, error-prone parts of network ops, handed to code that checks itself.</p>
+        </div>
+        <div class="proj-body">
+          <div class="field">
+            <div class="k">What it does</div>
+            <p>Four tools sharing one Netmiko layer, each aimed at a different chore: config backup with drift detection, pre and post change validation, STIG-style compliance auditing with gated remediation, and IPAM sync against NetBox.</p>
+          </div>
+          <div class="field">
+            <div class="k">Read-only first</div>
+            <p>The tools that only read (backup, audit, pre/post snapshots) run freely. The two that can change a device or a record, remediation and NetBox sync, are dry runs by default. They print exactly what they would do and touch nothing until I add an explicit apply flag.</p>
+          </div>
+          <div class="field">
+            <div class="k">How it's built</div>
+            <p>A src-layout Python package with a Typer CLI, one command group per tool, everything routed through a single Netmiko connection layer. Inventory and rules are declarative YAML, validated on load, and credentials come from the environment, never the repo. Built and validated in an EVE-NG lab, with a setup guide that takes someone from nothing to a working run.</p>
+          </div>
+          <div class="tags tags-spaced">
+            <span class="tag hot">Read-Only First</span><span class="tag">Python</span><span class="tag">Netmiko</span><span class="tag">Typer CLI</span><span class="tag">Git</span><span class="tag">Drift Detection</span><span class="tag">STIG Audit</span><span class="tag">NetBox</span>
+          </div>
+          </div>
+          <div class="btnrow">
+            <a class="btn" href="https://github.com/archieabeleda/netops-automation" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+              Repository
+            </a>
+          </div>
+        </div>
+      </div>
 
-/* ---------- cert "verify on credly" line ---------- */
-.c-verify {
-  font-family: var(--f-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--signal);
-  margin-top: 12px;
-  opacity: 0.8;
-  transition: opacity .18s;
-}
-a.cert:hover .c-verify { opacity: 1; }
+      <!-- Project 3: Secured Spine-Leaf EVE-NG Fabric -->
+      <div class="proj">
+        <div class="proj-top">
+          <div class="flag">Supporting lab</div>
+          <h3>Secured Spine-Leaf EVE-NG Fabric</h3>
+          <p>An importable EVE-NG topology built as the realistic target for the monitoring agents. A modern data center fabric with security baked into the underlay and overlay.</p>
+        </div>
+        <div class="proj-body">
+          <div class="field">
+            <div class="k">What's in it</div>
+            <p>An <strong>eBGP underlay</strong> with a <strong>VXLAN / EVPN overlay</strong>, anycast gateways, <strong>TrustSec / SGT</strong> policy, <strong>MACsec</strong> link encryption, and <strong>802.1X / ISE</strong> stubs. Wired up so streaming telemetry, NETCONF/RESTCONF, and NetFlow give the agents something real to watch.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">eBGP</span><span class="tag">VXLAN / EVPN</span><span class="tag">Anycast GW</span><span class="tag">TrustSec</span><span class="tag">MACsec</span><span class="tag">gNMI</span><span class="tag">NETCONF / YANG</span><span class="tag">NetFlow</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-/* ---------- tech stack rows ---------- */
-.stackrow {
-  display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 16px 24px;
-  align-items: center;
-  border: 1px solid var(--hairline);
-  background: linear-gradient(180deg, var(--carbon), var(--carbon-2));
-  border-radius: 12px;
-  padding: 20px 24px;
-  transition: border-color .2s;
-}
-.stackrow:hover { border-color: var(--hairline-2); }
-.stackrow + .stackrow { margin-top: 14px; }
-#stack .stackrow:first-of-type { margin-top: 26px; }
-.stackrow .cat {
-  font-family: var(--f-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--signal);
-}
-.stackrow .tags { gap: 8px; }
-.stackrow .tag { font-size: 12px; padding: 7px 12px; }
-.stackrow:hover .tag { border-color: var(--hairline-2); }
+    <!-- ---------- TECH STACK ---------- -->
+    <section class="panel" id="stack" tabindex="-1">
+      <p class="eyebrow">tech stack</p>
+      <h2 class="head">The tools that earn their keep.</h2>
+      <p class="body">Thirteen years of enterprise kit, plus the self-hosted AI stack I run at home. Grouped by what it does.</p>
 
-@media (max-width: 880px) {
-  .stackrow { grid-template-columns: 1fr; gap: 12px; padding: 18px; }
-}
+      <div class="stackrow">
+        <div class="cat">Network &amp; Security</div>
+        <div class="tags">
+          <span class="tag">Cisco</span><span class="tag">Palo Alto</span><span class="tag">Check Point</span><span class="tag">Zscaler</span><span class="tag">F5 BIG-IP</span>
+        </div>
+      </div>
+
+      <div class="stackrow">
+        <div class="cat">Perimeter &amp; Access</div>
+        <div class="tags">
+          <span class="tag">SD-WAN</span><span class="tag">IDS / IPS</span><span class="tag">NAC</span><span class="tag">VPN (IPsec)</span>
+        </div>
+      </div>
+
+      <div class="stackrow">
+        <div class="cat">Automation</div>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Ansible</span><span class="tag">Scrapli</span><span class="tag">Netmiko</span><span class="tag">Git</span><span class="tag">REST APIs</span>
+        </div>
+      </div>
+
+      <div class="stackrow">
+        <div class="cat">Platforms</div>
+        <div class="tags">
+          <span class="tag">CentOS</span><span class="tag">Ubuntu</span><span class="tag">Proxmox VE</span><span class="tag">Docker</span><span class="tag">Firebase Hosting</span>
+        </div>
+      </div>
+
+      <div class="stackrow">
+        <div class="cat">AI Stack</div>
+        <div class="tags">
+          <span class="tag">Ollama</span><span class="tag">Qwen3</span><span class="tag">Gemma 4</span><span class="tag">nomic-embed-text</span><span class="tag">Qdrant</span><span class="tag">RAG</span><span class="tag">LangGraph</span><span class="tag">Open WebUI</span><span class="tag">OpenClaw</span><span class="tag">Gradio</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- CONTACT ---------- -->
+    <section class="panel" id="contact" tabindex="-1">
+      <p class="eyebrow">contact</p>
+      <h2 class="head">Let's talk.</h2>
+      <p class="contact-line">Networks, security architecture, or pointing AI at infrastructure without it going sideways. Always up for comparing notes.</p>
+
+      <!-- EDIT LINKS / EDIT EMAIL -->
+      <div class="btnrow">
+        <a class="btn" href="mailto:hello@archieabeleda.dev">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="m2 4 6 4.5L14 4"/></svg>
+          hello@archieabeleda.dev
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/ajrabeleda" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.63 13.63h-2.37V9.9c0-.89-.02-2.03-1.24-2.03-1.24 0-1.43.97-1.43 1.97v3.79H6.22V6h2.27v1.04h.03c.32-.6 1.09-1.23 2.24-1.23 2.4 0 2.84 1.58 2.84 3.63v4.19ZM3.56 4.96a1.37 1.37 0 1 1 0-2.75 1.37 1.37 0 0 1 0 2.75ZM4.74 13.63H2.37V6h2.37v7.63ZM14.82 0H1.18C.53 0 0 .52 0 1.16v13.68C0 15.48.53 16 1.18 16h13.63c.65 0 1.19-.52 1.19-1.16V1.16C16 .52 15.46 0 14.82 0Z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn" href="https://github.com/archieabeleda/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
