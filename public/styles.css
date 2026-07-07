@@ -458,3 +458,9 @@ a.cert:hover .c-verify { opacity: 1; }
 @media (max-width: 880px) {
   .stackrow { grid-template-columns: 1fr; gap: 12px; padding: 18px; }
 }
+.offclock {
+  font-size: 15px;
+  color: var(--mist);
+  max-width: 62ch;
+  margin: 0;
+}
