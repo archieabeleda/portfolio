@@ -11,8 +11,7 @@ firebase-debug.log
 .env.*
 *.key
 *.pem
-*serviceAccount*.json
-*service-account*.json
+serviceAccount*.json
 google-application-credentials.json
 
 # os / editor cruft
