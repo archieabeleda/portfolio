@@ -266,6 +266,7 @@ p.body strong, p.lead strong { color: var(--bone); font-weight: 600; }
 .tags { display: flex; flex-wrap: wrap; gap: 7px; }
 .tags-spaced { margin-top: 18px; }
 .mt-block { margin-top: 22px; }
+.offclock { font-size: 15px; color: var(--mist); max-width: 62ch; margin: 0; }
 .tag {
   font-family: var(--f-mono);
   font-size: 11px;
@@ -326,7 +327,7 @@ a.cert:hover { border-color: var(--signal-d); transform: translateY(-2px); }
   background: linear-gradient(180deg, var(--carbon), var(--carbon-2));
   margin-bottom: 22px;
 }
-#lab .proj:first-of-type { margin-top: 24px; }
+#projects .proj:first-of-type { margin-top: 24px; }
 .proj-top {
   padding: 24px 26px 20px;
   border-bottom: 1px solid var(--hairline);
@@ -457,10 +458,4 @@ a.cert:hover .c-verify { opacity: 1; }
 
 @media (max-width: 880px) {
   .stackrow { grid-template-columns: 1fr; gap: 12px; padding: 18px; }
-}
-.offclock {
-  font-size: 15px;
-  color: var(--mist);
-  max-width: 62ch;
-  margin: 0;
 }
