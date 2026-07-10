@@ -102,7 +102,7 @@
 
       <p class="lead">Thirteen years keeping high-stakes networks locked down and online. Belt and braces on every layer. Now I point the same paranoia at my own kit.</p>
 
-      <p class="body">Lately my off hours go to pointing AI at the network. A home lab full of autonomous agents that read device state and reason about it, fenced in behind enough guardrails that they can look but almost never touch. Same instinct I bring to work. A lot more freedom to break things.</p>
+      <p class="body">Lately my off hours go to pointing AI at the network. A home lab where local models read device state, pull the real config, and reason about it out loud. They get to look and think. They do not get a write path, and nothing reaches a device without going through me first. Same instinct I bring to work, with a lot more freedom to break things.</p>
 
       <hr class="rule" />
 
@@ -147,11 +147,11 @@
       <h2 class="head">Everything here checks its own work.</h2>
       <p class="body">A self-hosted lab where I build and break network security and AIOps tools end to end. Real Cisco simulation, real local models, and a security architecture stricter than it needs to be. On purpose.</p>
 
-      <!-- Project 1: Config Compliance Copilot (flagship, newest) -->
+      <!-- Project 1: Grounded Config Auditor (flagship, newest) -->
       <div class="proj">
         <div class="proj-top">
           <div class="flag">Flagship build</div>
-          <h3>Config Compliance Copilot</h3>
+          <h3>Grounded Config Auditor</h3>
           <p>I let an AI read every running-config on the network. It never gets a write path.</p>
         </div>
         <div class="proj-body">
@@ -172,10 +172,20 @@
           </div>
 
           <div class="field">
+            <div class="k">The proving ground</div>
+            <p>Built and validated against the secured spine-leaf EVPN fabric below, so the configs it audits carry a real underlay and overlay with policy on top, not toy examples. Pointing the same pipeline at production changes one inventory file and a fair amount of paperwork. The code path stays identical.</p>
+          </div>
+          
+          <div class="field">
             <div class="k">The payoff</div>
-            <p>Compliance visibility across a heterogeneous fleet from one plain question, with an audit trail attached. Drift caught on a quiet Tuesday, instead of during the audit or after the breach.</p>
+            <p>Compliance visibility across a mixed fleet from one plain question, with an audit trail attached. Drift caught on a quiet Tuesday, instead of during the audit or after the breach.</p>
           </div>
 
+          <div class="field">
+            <div class="k">Tag pills</div>
+            <p>Read-Only, RAG, Qdrant, Ollama, Qwen3, nomic-embed-text, Netmiko, Multi-Vendor, EVE-NG</p>
+          </div>
+          
           <!-- OPTIONAL, ONLY IF TRUE: uncomment and fill in real numbers once you have run it against the fleet.
           <div class="field">
             <div class="k">First run</div>
@@ -189,7 +199,7 @@
 
           <!-- EDIT LINK: point this at the specific repo once it exists; for now it goes to your profile -->
           <div class="btnrow">
-            <a class="btn" href="https://github.com/archieabeleda/" target="_blank" rel="noopener">
+            <a class="btn" href="https://github.com/archieabeleda/grounded-config-auditor" target="_blank" rel="noopener">
               <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
               Repository
             </a>
