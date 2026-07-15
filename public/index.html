@@ -235,20 +235,35 @@
         </div>
       </div>
 
-      <!-- Project 3: Secured Spine-Leaf EVE-NG Fabric -->
-      <div class="proj">
+      <!-- Project 3: EVPN Fabric with External L3Out -->
+            <div class="proj">
         <div class="proj-top">
           <div class="flag">Supporting lab</div>
-          <h3>Secured Spine-Leaf EVE-NG Fabric</h3>
-          <p>An importable EVE-NG topology built as the realistic target for the monitoring agents. A modern data center fabric with security baked into the underlay and overlay.</p>
+          <h3>EVPN Fabric with External L3Out</h3>
+          <p>A spine-leaf EVPN fabric that hands each tenant off to the outside world on its own eBGP session. Every hop proven before I trust it.</p>
         </div>
         <div class="proj-body">
           <div class="field">
-            <div class="k">What's in it</div>
-            <p>An <strong>eBGP underlay</strong> with a <strong>VXLAN / EVPN overlay</strong>, anycast gateways, <strong>TrustSec / SGT</strong> policy, <strong>MACsec</strong> link encryption, and <strong>802.1X / ISE</strong> stubs. Wired up so streaming telemetry, NETCONF/RESTCONF, and NetFlow give the agents something real to watch.</p>
+            <div class="k">What it is</div>
+            <p>A spine-leaf fabric on Nexus 9000v. <strong>OSPF</strong> is the underlay and nothing more. The overlay is <strong>iBGP</strong> with both spines as EVPN <strong>route reflectors</strong>, so every leaf holds two sessions no matter how many leaves I add. The fabric above runs an eBGP underlay. This one runs OSPF and route reflectors, so between the two labs I have built the underlay both ways.</p>
           </div>
-          <div class="tags">
-            <span class="tag">eBGP</span><span class="tag">VXLAN / EVPN</span><span class="tag">Anycast GW</span><span class="tag">TrustSec</span><span class="tag">MACsec</span><span class="tag">gNMI</span><span class="tag">NETCONF / YANG</span><span class="tag">NetFlow</span>
+          <div class="field">
+            <div class="k">The L3Out handoff</div>
+            <p>Both leaves double as border leaves. Each tenant leaves the fabric on its own <strong>dot1q subinterface</strong> and its own <strong>eBGP</strong> session, into an external IOS-XE router that has no idea EVPN or VXLAN exists behind it. External routes come back as EVPN <strong>Type-5</strong> and reach every host inside. Two handoffs, two exits. If one border drops, traffic reroutes across the fabric to the other on its own.</p>
+          </div>
+          <div class="field">
+            <div class="k">How I proved it</div>
+            <p>It ships as an importable EVE-NG topology with every device config baked in, and a fifteen-point runbook that runs from OSPF adjacency to live border failover. Where the virtual kit falls short of real hardware, the notes say so instead of pretending. CoPP only polices in software here, and a 9000v cannot terminate MACsec at all.</p>
+          </div>
+          <div class="tags tags-spaced">
+            <span class="tag hot">VRF-Lite L3Out</span><span class="tag">OSPF</span><span class="tag">iBGP RR</span><span class="tag">VXLAN / EVPN</span><span class="tag">Type-5</span><span class="tag">Anycast GW</span><span class="tag">Nexus 9000v</span><span class="tag">IOS-XE</span><span class="tag">EVE-NG</span>
+          </div>
+          <!-- EDIT LINK: this goes live once you push the evpn-vxlan-l3out-lab repo -->
+          <div class="btnrow">
+            <a class="btn" href="https://github.com/archieabeleda/evpn-vxlan-l3out-lab" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+              Repository
+            </a>
           </div>
         </div>
       </div>
