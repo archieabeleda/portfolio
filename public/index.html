@@ -245,11 +245,11 @@
         <div class="proj-body">
           <div class="field">
             <div class="k">What it is</div>
-            <p>A spine-leaf fabric on Nexus 9000v. <strong>OSPF</strong> is the underlay and nothing more. The overlay is <strong>iBGP</strong> with both spines as EVPN <strong>route reflectors</strong>, so every leaf holds two sessions no matter how many leaves I add. The fabric above runs an eBGP underlay. This one runs OSPF and route reflectors, so between the two labs I have built the underlay both ways.</p>
+            <p>A spine-leaf fabric on Nexus 9000v. OSPF is the underlay and nothing more. The overlay is iBGP with both spines as EVPN route reflectors, so every leaf holds two sessions no matter how many leaves I add. The fabric above runs an eBGP underlay. This one runs OSPF and route reflectors, so between the two labs I have built the underlay both ways.</p>
           </div>
           <div class="field">
             <div class="k">The L3Out handoff</div>
-            <p>Both leaves double as border leaves. Each tenant leaves the fabric on its own <strong>dot1q subinterface</strong> and its own <strong>eBGP</strong> session, into an external IOS-XE router that has no idea EVPN or VXLAN exists behind it. External routes come back as EVPN <strong>Type-5</strong> and reach every host inside. Two handoffs, two exits. If one border drops, traffic reroutes across the fabric to the other on its own.</p>
+            <p>Both leaves double as border leaves. Each tenant leaves the fabric on its own dot1q subinterface and its own eBGP session, into an external IOS-XE router that has no idea EVPN or VXLAN exists behind it. External routes come back as EVPN Type-5 and reach every host inside. Two handoffs, two exits. If one border drops, traffic reroutes across the fabric to the other on its own.</p>
           </div>
           <div class="field">
             <div class="k">How I proved it</div>
